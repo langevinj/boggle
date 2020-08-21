@@ -3,18 +3,21 @@ let $response = $('#response')
 let $score = $('#score')
 let $timer = $('#timer')
 let currScore = 0;
-// const TIME = 60;
+let count = 10;
+let timeLeft = true;
+
 
 //Event handler for a user submitting a guess
 $('#guess').on("submit", async function(e){
     e.preventDefault();
-    let userGuess = $('#userGuess').val();
-    let res = await axios.get(`/guess?word=${userGuess}`)
-    let result = res.data.result
-    appendResponse(result);
-    scoreWord(userGuess, result);
-    appendCurrScore();
-    // timer();
+    if (timeLeft === true){
+        let userGuess = $('#userGuess').val();
+        let res = await axios.get(`/guess?word=${userGuess}`)
+        let result = res.data.result
+        appendResponse(result);
+        scoreWord(userGuess, result);
+        appendCurrScore();
+    }
 });
 
 //Appends result of a guess on the front-end
@@ -49,14 +52,13 @@ function appendCurrScore(){
     $score.append(`<h3>Current Score: ${currScore}</h3>`)
 }
 
-// function timer(){
-//     count = TIME;
-//     while (count > 0){
-//         $timer.append(`<h3>Time: ${count}</h3>`)
-//         count--;
-//         setTimeout(function(){
-//             $timer.empty();
-//             console.log(count);
-//         }, 1000);
-//     }
-// }
+timer = setInterval(function() {
+    $timer.empty();
+    $timer.append(`<h3>Time: ${count--}</h3>`);
+    if(count == 0){
+        $timer.empty();
+        $timer.append(`<h3>Time's up!</h3>`);
+        clearInterval(timer);
+        timeLeft = false;
+    } 
+}, 1000)
