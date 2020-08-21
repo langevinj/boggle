@@ -1,0 +1,21 @@
+#container {
+    text-align: center;
+}
+
+#board > p{
+    width: 50px;
+}
+
+#board table {
+    margin: auto;
+    padding-bottom: 15px;
+    
+}
+
+td {
+    border-spacing: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #99CCFF;
+    font-weight: bold;
+}
