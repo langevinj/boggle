@@ -3,7 +3,7 @@ let $response = $('#response')
 let $score = $('#score')
 let $timer = $('#timer')
 let currScore = 0;
-let count = 20;
+let count = 60;
 let timeLeft = true;
 let guessedWords = [];
 

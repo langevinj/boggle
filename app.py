@@ -11,7 +11,7 @@ app.debug = True
 boggle_game = Boggle()
 
 
-@app.route('/game')
+@app.route('/')
 def set_up_board():
     """Creates and displays the board"""
     session['board'] = boggle_game.make_board() #unsure if I should make a new board each time called
