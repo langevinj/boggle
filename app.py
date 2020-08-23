@@ -24,11 +24,9 @@ def set_up_board():
 def get_user_guess():
     """Extract user's guess from AJAX request"""
     user_guess = request.args['word']
-    is_word = check_guess(user_guess)#why do I need to check this seems like extra step
-    print(is_word)
-    is_valid = check_if_on_board(user_guess)
-    results = {"result": is_valid}
-    return jsonify(results)
+    board = session["board"]
+    resp = boggle_game.check_valid_word(board, user_guess)
+    return jsonify({'result':resp })
 
 @app.route('/increment', methods=['POST'])
 def increment_game_count():
@@ -54,17 +52,3 @@ def check_high_score(last_score):
     return session['high_score']
 
 
-def check_guess(user_guess):
-    """Checks if the user's guess is an actual word"""
-    if (user_guess in boggle_game.words):
-        return True
-    else:
-        return False
-
-
-
-def check_if_on_board(user_guess):
-    """Check if the user's guess is on the board"""
-    board = session['board']
-    result = boggle_game.check_valid_word(board, user_guess)
-    return result
