@@ -5,8 +5,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "abc123"
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-debug = DebugToolbarExtension(app)
-app.debug = True
+# debug = DebugToolbarExtension(app)
+# app.debug = True
 
 boggle_game = Boggle()
 

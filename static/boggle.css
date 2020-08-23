@@ -18,4 +18,26 @@ td {
     padding: 10px;
     background-color: #99CCFF;
     font-weight: bold;
+    font-size: 3rem;
+    width: 4rem;
+}
+
+html{
+    background-image: url("/static/WoodBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+#timer {
+    font-size: 2rem;
+}
+
+#response {
+    font-size: 2rem;
 }
